@@ -8,6 +8,7 @@ export const getItems = ()=> {
 
 export const getItems = (id)=> {
     return{
-        type: DELETE_ITEMS
+        type: DELETE_ITEMS,
+        payload: id
     };
 }
