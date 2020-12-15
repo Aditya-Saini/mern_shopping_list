@@ -4,4 +4,10 @@ export const getItems = ()=> {
     return{
         type: GET_ITEMS
     };
+};
+
+export const getItems = (id)=> {
+    return{
+        type: DELETE_ITEMS
+    };
 }
