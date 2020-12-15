@@ -13,8 +13,10 @@ function App() {
     <Provider store={store}>
       <div className="App">
           <AppNavbar/>
-          <ItemModal/>
-          <ShoppingList/>
+          <Container>
+            <ItemModal/>
+            <ShoppingList/>
+          </Container>
       </div>
     </Provider>
   );
