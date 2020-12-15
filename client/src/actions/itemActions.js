@@ -30,6 +30,6 @@ export const addItem = (item)=> {
 
 export const setItemsLoading = () => {
     return {
-        types: ITEMS_LOADING
+        type: ITEMS_LOADING
     }
 }
