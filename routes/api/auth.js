@@ -2,7 +2,8 @@ const express=require('express'),
       router=express.Router(),
       bcrypt = require("bcryptjs"),
       config = require("config"),
-      jwt = require("jsonwebtoken");
+      jwt = require("jsonwebtoken"),
+      auth = require('../../middleware/auth');
 
 //User Model
 const User = require('../../models/user');
@@ -50,5 +51,16 @@ router.post("/", (req, res) => {
     })
 });
 
+//@route GET api/auth/user
+//@desc Get user data
+//@access Public
+
+router.get("/user", auth, (req, res)=> {
+    User.findById(req.user.id)
+        .select('-password')
+        .then(user => {
+            res.json(user);
+        });
+});
 
 module.exports = router;
