@@ -1,6 +1,7 @@
 const express=require('express'),
       mongoose=require('mongoose'),
-      path=require('path');
+      path=require('path'),
+      config = require('config');
 
 const items= require('./routes/api/item')
 
@@ -10,7 +11,7 @@ const app=express();
 app.use(express.json());
 
 //DB Config
-const db=require('./config/keys').mongoURI;
+const db=config.get('mongoURI');
 
 //connect mongo
 mongoose
