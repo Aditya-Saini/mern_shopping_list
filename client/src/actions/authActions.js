@@ -57,6 +57,31 @@ export const register = ({ name, email, password }) => dispatch => {
          });
 };
 
+// Login User
+export const login = ({ email, password }) => dispatch => {
+    //headers
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    // Request body
+    const body = JSON.stringify({ email, password });
+
+    axios.post('/api/auth', body, config)
+        .then(res => dispatch({  //IF data is successfully sent over to server
+            type: LOGIN_SUCCESS,
+            payload: res.data
+         }))
+         .catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL'));
+             dispatch({ //if there is some kind of error
+                 type: LOGIN_FAIL
+             });
+         });
+};
+
 // Logout User
 export const logout = () => {
     return {
